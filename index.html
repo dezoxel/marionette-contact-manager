@@ -32,26 +32,12 @@
     <script src="./assets/js/vendor/backbone.marionette.js"></script>
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/entities/contact.js"></script>
+    <script src="./assets/js/apps/contacts/list/view.js"></script>
+    <script src="./assets/js/apps/contacts/list/controller.js"></script>
 
     <script type="text/javascript">
-      ContactManager.ContactItemView = Marionette.ItemView.extend({
-        template: '#contact-list-item',
-        tagName: 'li'
-      });
-
-      ContactManager.ContactCollectionView = Marionette.CollectionView.extend({
-        itemView: ContactManager.ContactItemView,
-        tagName: 'ul'
-      });
-
       ContactManager.on('initialize:after', function() {
-        var contacts = ContactManager.request('contact:entities');
-
-        var contactCollectionView = new ContactManager.ContactCollectionView({
-          collection: contacts
-        });
-
-        ContactManager.mainRegion.show(contactCollectionView);
+        ContactManager.ContactsApp.List.Controller.listContacts();
       });
 
       ContactManager.start();
