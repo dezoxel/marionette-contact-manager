@@ -31,15 +31,9 @@
     <script src="./assets/js/vendor/backbone.js"></script>
     <script src="./assets/js/vendor/backbone.marionette.js"></script>
     <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/entities/contact.js"></script>
 
     <script type="text/javascript">
-      ContactManager.Contact = Backbone.Model.extend({});
-
-      ContactManager.ContactCollection = Backbone.Collection.extend({
-        model: ContactManager.Contact,
-        comparator: 'firstName'
-      });
-
       ContactManager.ContactItemView = Marionette.ItemView.extend({
         template: '#contact-list-item',
         tagName: 'li'
@@ -51,23 +45,7 @@
       });
 
       ContactManager.on('initialize:after', function() {
-        var contacts = new ContactManager.ContactCollection([
-          {
-            firstName: 'Bob',
-            lastName: 'Brigham',
-            phoneNumber: '555-0163'
-          },
-          {
-            firstName: 'Alice',
-            lastName: 'Arten',
-            phoneNumber: '555-0184'
-          },
-          {
-            firstName: 'Charlie',
-            lastName: 'Campbell',
-            phoneNumber: '555-0129'
-          }
-        ]);
+        var contacts = ContactManager.request('contact:entities');
 
         var contactCollectionView = new ContactManager.ContactCollectionView({
           collection: contacts
