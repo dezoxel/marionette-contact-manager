@@ -1,11 +1,14 @@
 ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbone, Marionette, $, _) {
   List.Contact = Marionette.ItemView.extend({
     template: '#contact-list-item',
-    tagName: 'li'
+    tagName: 'tr'
   });
 
-  List.Contacts = Marionette.CollectionView.extend({
+  List.Contacts = Marionette.CompositeView.extend({
     itemView: List.Contact,
-    tagName: 'ul'
+    tagName: 'table',
+    className: 'table table-hover',
+    template: '#contacts-list',
+    itemViewContainer: 'tbody'
   });
 });
