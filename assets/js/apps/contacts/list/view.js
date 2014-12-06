@@ -4,12 +4,28 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
     tagName: 'tr',
 
     events: {
-      'click': 'highlightName'
+      'click': 'highlightName',
+      'click button.remove': 'removeContact'
     },
 
     highlightName: function() {
       this.$el.toggleClass('warning');
+    },
+
+    removeContact: function(e) {
+      e.stopPropagation();
+      this.trigger('contact:delete', this.model);
+    },
+
+    remove: function() {
+      var builtinRemove = Marionette.ItemView.prototype.remove;
+      var self = this;
+
+      this.$el.fadeOut(function() {
+        builtinRemove.call(self);
+      });
     }
+
   });
 
   List.Contacts = Marionette.CompositeView.extend({

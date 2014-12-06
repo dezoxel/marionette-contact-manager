@@ -22,13 +22,22 @@
     </div>
 
     <script type="text/template" id="contact-list-item">
-      <td><%- firstName %></td><td><%- lastName %></td>
+      <td><%- firstName %></td>
+      <td><%- lastName %></td>
+      <td>
+        <button class="btn btn-small remove">
+          <i class="icon-remove"></i>
+          Remove
+        </button>
+      </td>
     </script>
 
     <script type="text/template" id="contacts-list">
       <thead>
         <tr>
-          <th>First name</th> <th>Last name</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th></th>
         </tr>
         <tbody></tbody>
       </thead>
