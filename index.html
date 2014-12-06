@@ -25,7 +25,11 @@
       <td><%- firstName %></td>
       <td><%- lastName %></td>
       <td>
-        <button class="btn btn-small remove">
+        <a href="#" class="btn btn-small js-show">
+          <i class="icon-eye-open"></i>
+          Show
+        </a>
+        <button class="btn btn-small js-remove">
           <i class="icon-remove"></i>
           Remove
         </button>
@@ -43,6 +47,11 @@
       </thead>
     </script>
 
+    <script type="text/template" id="contact-view">
+      <h1><%- firstName %> <%- lastName %></h1>
+      <p><strong>Phone number:</strong> <%- phoneNumber %></p>
+    </script>
+
     <script src="./assets/js/vendor/jquery.js"></script>
     <script src="./assets/js/vendor/json2.js"></script>
     <script src="./assets/js/vendor/underscore.js"></script>
@@ -52,6 +61,8 @@
     <script src="./assets/js/entities/contact.js"></script>
     <script src="./assets/js/apps/contacts/list/view.js"></script>
     <script src="./assets/js/apps/contacts/list/controller.js"></script>
+    <script src="./assets/js/apps/contacts/show/view.js"></script>
+    <script src="./assets/js/apps/contacts/show/controller.js"></script>
 
     <script type="text/javascript">
       ContactManager.start();
